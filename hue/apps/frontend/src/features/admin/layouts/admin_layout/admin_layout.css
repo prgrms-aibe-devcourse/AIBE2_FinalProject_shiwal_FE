@@ -1,0 +1,9 @@
+.admin_layout { display: flex; flex-direction: column; height: 100vh; }
+.admin_header { height: 56px; background:#f7f7f7; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; padding:0 16px; }
+.admin_body { flex:1; display:flex; min-height:0; }
+
+.admin_sidebar { width: 200px; background:#e3f0eb; padding:12px; border-right:1px solid #d8e6e1; }
+.menu_btn { width:100%; text-align:left; padding:10px 12px; margin-bottom:8px; border-radius:6px; background:#fff; border:1px solid #dfe7e4; cursor:pointer; }
+.menu_btn.active { background:#bfe8db; border-color:#a9d7cb; }
+
+.admin_content { flex:1; padding:20px; background:#f3f5f7; overflow:auto; }
