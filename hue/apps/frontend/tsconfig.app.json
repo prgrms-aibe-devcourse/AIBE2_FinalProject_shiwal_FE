@@ -15,13 +15,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* 👇 추가 */
+    "types": ["react", "react-dom"],
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+//    "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
 }
