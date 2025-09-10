@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 50px;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    font-family: "Pretendard", sans-serif;
+}
+
+.nav-left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 30px;
+    padding-top: 4px;
+}
+
+.nav-logo-img {
+    width: 74px; /* 로고 크기 조정 */
+    height: auto;
+}
+
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    color: #333;
+    font-size: 17px;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+    color: #4CAF9E;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-right a {
+    color: #7B7B7B;
+}
