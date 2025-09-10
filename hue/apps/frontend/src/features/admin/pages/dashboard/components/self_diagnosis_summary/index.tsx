@@ -1,3 +1,5 @@
+import './self_diagnosis_summary.css'
+
 type Risk_item = {
     nickname: string
     tags: string[]

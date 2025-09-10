@@ -2,8 +2,62 @@
 .admin_header { height: 56px; background:#f7f7f7; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; padding:0 16px; }
 .admin_body { flex:1; display:flex; min-height:0; }
 
-.admin_sidebar { width: 200px; background:#e3f0eb; padding:12px; border-right:1px solid #d8e6e1; }
-.menu_btn { width:100%; text-align:left; padding:10px 12px; margin-bottom:8px; border-radius:6px; background:#fff; border:1px solid #dfe7e4; cursor:pointer; }
-.menu_btn.active { background:#bfe8db; border-color:#a9d7cb; }
+.admin_sidebar { width: 220px; background: #e7f2ee; padding: 12px; flex-shrink: 0; }
+.side_nav      { display: flex; flex-direction: column; gap: 12px; }
 
-.admin_content { flex:1; padding:20px; background:#f3f5f7; overflow:auto; }
+.side_link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #fff;
+    color: #3557e3;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.side_link.active {
+    background: #dff7ee;
+    border: 1px solid #bfead9;
+    font-weight: 700;
+}
+
+.admin_content {
+    flex: 1;
+    background: #f5f7f9;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content_card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+    /* 고정 크기 */
+    height: 300px;
+    width: 100%;
+
+    overflow-y: auto;
+}
+
+.page_shell {
+    max-width: 1200px;            /* 원하는 최대 폭 */
+    margin: 0 auto;
+}
+
+/* 하얀 카드 */
+.page_card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    padding: 24px;
+}
+
+/* 여백/반응형 조금 */
+@media (max-width: 900px) {
+    .admin_content { padding: 16px; }
+    .page_card { padding: 16px; }
+}
