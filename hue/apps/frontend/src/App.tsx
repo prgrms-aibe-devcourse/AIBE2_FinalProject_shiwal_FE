@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/user/Login.tsx";
 import Signup from "./pages/user/Signup.tsx";
 import AIchat from "./pages/chat/AIchat.tsx";
+import AIchatHis from "./pages/chat/AIchatHis.tsx";
+import Profile from "./pages/user/Profile.tsx";
 
 function AppContent() {
     const location = useLocation();
@@ -27,6 +29,8 @@ function AppContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/aichat" element={<AIchat />} />
+                <Route path="/aichat/history" element={<AIchatHis />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </>
     );

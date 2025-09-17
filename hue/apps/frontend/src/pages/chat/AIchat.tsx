@@ -64,11 +64,11 @@ function AIchat() {
     };
 
     return (
-        <div className="chat-main">
+        <div className="main-box-col">
             <div className="chat-container">
                 <aside className="sidebar">
                     <div className="sidebar-title">채팅</div>
-                    <button className="sidebar-active">현재 대화</button>
+                    <button>현재 대화</button>
                     <button>이전 대화 주제 1</button>
                     <button>이전 대화 주제 2</button>
                     <button>이전 대화 주제 3</button>
