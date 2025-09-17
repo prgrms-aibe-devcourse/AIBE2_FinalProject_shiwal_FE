@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Pretendard", sans-serif; /* 기본 폰트 */
+  /*justify-content: center; !* 가로 가운데 *!*/
+  /*align-items: center;    !* 세로 가운데 *!*/
 }
 
 body.white-bg {
@@ -14,17 +16,22 @@ body.gray-bg {
 
 /* 메인 */
 .main-box-col {
+  background: #ffffff;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px auto;
-  width: 600px;
-  background: #fff;
+  justify-content: center;
+  /*align-items: start;*/
+  margin: 30px;
+  width: 75%;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-left: auto;
+  margin-right: auto;
+  /*padding: 32px;*/
+  height: 800px;
 }
-.main-box-row { /* 건들 ㄴ */
+
+.main-box-row {
   background: #ffffff;
   flex: 1;
   display: flex;
@@ -42,7 +49,7 @@ body.gray-bg {
 }
 
 .title {
-  font-size: 30px;
+  font-size: 35px;
   margin-bottom: 20px; /* title과 green-box 간격 */
   text-align: center;
   color: #404040;
@@ -54,6 +61,7 @@ body.gray-bg {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
+
   margin: 0 auto;  /* 가운데 정렬 */
   flex: 1;         /* 남은 공간을 차지하도록 */
   margin-bottom: 10px;
@@ -196,12 +204,12 @@ body.gray-bg {
 
 
 /*AIchatHis*/
-.title {
-  color: #404040;
-  font-size: 30px;
-  margin-bottom: 20px;
-  text-align: center;
-}
+/*.title {*/
+/*  color: #404040;*/
+/*  font-size: 30px;*/
+/*  margin-bottom: 20px;*/
+/*  text-align: center;*/
+/*}*/
 
 .search-filter {
   display: flex;
@@ -299,10 +307,23 @@ body.gray-bg {
 
 p {
   margin: 15px 0px 15px 10px;
-  color: #808080;
 }
 
 /*프로필*/
+/* 프로필 메인 박스 */
+.main-box-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  width: 600px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* 프로필 이미지 */
 .profile-image img {
   width: 80px;
   height: 80px;

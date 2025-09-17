@@ -11,7 +11,7 @@ function Profile() {
     const [dataAgree, setDataAgree] = useState(false);
 
     return (
-        <div className="main-box-col">
+        <div className="main-box-profile">
             <div className="title">나의 프로필</div>
             <section className="green-box">
                 {/* 프로필 이미지 */}
