@@ -15,7 +15,7 @@ export default function Signup() {
         e.preventDefault();
         // TODO: 실제 회원가입 로직(서버 호출) 넣기
         console.log("회원가입 시도:", { email, password, n, nickname });
-        // 예시: 로그인 성공 시 메인 페이지로 이동
+        // 로그인 성공 시 메인 페이지로 이동
         navigate("/login");
     };
 
