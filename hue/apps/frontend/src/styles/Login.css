@@ -1,0 +1,155 @@
+/* page 전체 */
+body {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.auth-page {
+    width: 500px;
+    /*min-height: 700px;*/
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    background-color: #ffffff; /* 요청하신 메인 배경색 */
+    padding: 50px 200px;
+}
+
+/* 로고 영역 */
+.logo-wrap {
+    margin-bottom: 4px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.logo-img {
+    width: 200px;       /* 필요에 따라 조절 */
+    height: auto;
+    object-fit: contain;
+}
+
+/* 폼 / 입력 */
+.auth-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input {
+    /*width: 100%;*/
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #e6efed;
+    align-items: center;
+    font-size: 14px;
+    outline: none;
+    box-shadow: none;
+}
+.input-mint {
+    background: #EAF6F2;   /* 연한 민트 계열 (입력창) */
+    color: #2b3a3a;
+}
+
+/* 로그인 버튼 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+.btn-primary {
+    background: #CBE6F2;  /* 연한 파랑-하늘 */
+    color: #08485d;
+}
+
+/* 구분선 '또는' */
+.or-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.or-line::before,
+.or-line::after{
+    content: "";
+    height: 1px;
+    background: #eee;
+    flex: 1;
+}
+.or-line span{
+    color: #9aa3a2;
+    font-size: 13px;
+}
+
+/* 소셜 버튼들 */
+.socials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.btn-kakao {
+    background: #FEE500;
+    color: #111;
+    display: flex;
+    align-items: center;
+    /*justify-content: flex-start;*/
+    padding-left: 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.btn-google {
+    background: #EA4335;
+    color: white;
+    display: flex;
+    align-items: center;
+    /*justify-content: flex-start;*/
+    padding-left: 18px;
+    border-radius: 8px;
+    border: none;
+}
+
+.kakao-img, .google-img {
+    width: 20px;
+}
+
+/* 하단 문구 */
+.muted {
+    color: #8b9592;
+    font-size: 13px;
+    text-align: center;
+    width: 100%;
+}
+
+/* 접근성용 숨김 라벨 */
+.sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    color: #7B7B7B;
+}
+
+.agree-text {
+    color: #787878;
+    font-size: 14px;
+    cursor: pointer; /* 글씨 누르면 체크 됨 */
+}
+
+.agree-box {
+    display: flex;
+    align-items: center;
+    gap: 3px; /* 체크박스와 텍스트 사이 간격 */
+}
