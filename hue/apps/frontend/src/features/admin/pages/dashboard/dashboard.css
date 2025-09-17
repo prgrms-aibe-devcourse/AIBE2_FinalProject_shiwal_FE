@@ -1,0 +1,16 @@
+.dashboard_wrap { display: grid; gap: 16px; }
+
+.grid_two{
+    display:grid; gap:16px;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 980px){
+    .grid_two{ grid-template-columns: 1fr 1fr; }
+}
+
+.panel { background:#fff; border-radius:12px; padding:16px; overflow:hidden; }
+.panel h3 { margin:0 0 8px; font-size:14px; color:#495057; }
+
+.panel > svg,
+.panel > canvas,
+.panel > div { width:100%; max-width:100%; }
