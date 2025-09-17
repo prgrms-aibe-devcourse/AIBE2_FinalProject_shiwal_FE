@@ -1,0 +1,59 @@
+/* ===== 테이블 ===== */
+.m_table_wrap { border:1px solid #e5e8eb; border-radius:10px; overflow:hidden; background:#fff; }
+
+.m_header, .m_row {
+    display:grid;
+    grid-template-columns: 2fr 1.6fr 1.4fr 1.2fr 1.2fr 1.4fr 0.6fr;
+    gap:8px;
+    align-items:center;
+    padding:12px 14px;
+}
+.m_header {
+    background:#f8fafc;
+    font-weight:700;
+    color:#475569;
+    position:sticky; top:0; z-index:1;
+    border-bottom:1px solid #e5e8eb;
+}
+
+.m_row { border-bottom:1px solid #f0f3f6; }
+.m_row:last-child { border-bottom:none; }
+.m_cell { display:flex; align-items:center; gap:8px; }
+.m_name { font-weight:600; }
+.m_sub { color:#8a94a6; font-size:12px; }
+
+.m_role { font-weight:600; }
+
+/* 임시비밀번호 배지 버튼 */
+.badge_btn {
+    padding:4px 10px; background:#4583ff; color:#fff; border:none; border-radius:8px;
+    font-size:12px; cursor:pointer;
+}
+
+/* ON/OFF 스위치 */
+.switch { position:relative; display:inline-block; width:42px; height:22px; }
+.switch input { display:none; }
+.slider {
+    position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0;
+    background:#d1d5db; border-radius:999px; transition:.2s;
+}
+.slider:before {
+    content:""; position:absolute; height:18px; width:18px; left:2px; top:2px;
+    background:white; border-radius:50%; transition:.2s;
+}
+.switch input:checked + .slider { background:#34d399; }
+.switch input:checked + .slider:before { transform:translateX(20px); }
+.onoff { margin-left:8px; font-size:12px; color:#6b7280; }
+.onoff.on { color:#10b981; }
+.onoff.off { color:#9ca3af; }
+
+/* 액션 아이콘 버튼 */
+.icon_btn { border:none; background:transparent; font-size:20px; line-height:1; cursor:pointer; color:#94a3b8; }
+.icon_btn:hover { color:#64748b; }
+
+/* 페이지네이션 */
+.m_pagination { display:flex; align-items:center; justify-content:center; gap:10px; padding:10px; }
+.btn_sm { height:28px; padding:0 10px; border:1px solid #e0e6ea; background:#fff; border-radius:8px; cursor:pointer; }
+.pages { display:flex; gap:4px; }
+.page_btn { min-width:28px; height:28px; border:1px solid #e0e6ea; background:#fff; border-radius:6px; cursor:pointer; }
+.page_btn.active { background:#111827; color:#fff; border-color:#111827; }
