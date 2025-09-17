@@ -1,0 +1,31 @@
+.contents_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contents_tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.tab_btn {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.tab_btn:hover {
+    background: #e5e5e5;
+}
+
+.contents_area {
+    flex: 1;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-height: 300px; /* 기본 크기 */
+    padding: 16px;
+}

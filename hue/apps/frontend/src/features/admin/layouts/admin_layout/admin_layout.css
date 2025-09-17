@@ -1,10 +1,13 @@
-.admin_layout { display: flex; flex-direction: column; height: 100vh; }
-.admin_header { height: 56px; background:#f7f7f7; border-bottom:1px solid #e5e5e5; display:flex; align-items:center; padding:0 16px; }
-.admin_body { flex:1; display:flex; min-height:0; }
+.admin_layout { display: flex; flex-direction: column; min-height: 100vh; }
+.admin_header { height: 56px; border-bottom: 1px solid #e5e5e5; display:flex; align-items:center; padding: 0 16px; }
+.admin_body   { flex: 1; display: flex; min-height: 0; }
 
-.admin_sidebar { width: 220px; background: #e7f2ee; padding: 12px; flex-shrink: 0; }
+.admin_sidebar { flex: 0 0 200px; width: 200px; background: #e7f2ee; padding: 12px; }
+.admin_content { flex: 1 1 auto; min-width: 0; overflow: auto; background: #f6f8f9; }
+
+.page_shell { max-width: 1120px; margin: 16px auto; padding: 0 16px; width: 100%; }
+
 .side_nav      { display: flex; flex-direction: column; gap: 12px; }
-
 .side_link {
     display: block;
     padding: 12px 14px;

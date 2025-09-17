@@ -18,13 +18,12 @@ const AdminLayout = () => {
                             구성원 관리
                         </NavLink>
 
-                        <NavLink to="/admin/settings" className={({ isActive }) => `side_link ${isActive ? 'active' : ''}`}>
+                        <NavLink to="/admin/contents" className={({ isActive }) => `side_link ${isActive ? 'active' : ''}`}>
                             콘텐츠 관리
                         </NavLink>
                     </nav>
                 </aside>
 
-                {/* 여기서 하위 라우트 페이지가 바뀌어 렌더링됨 */}
                 <main className="admin_content">
                     <div className="page_shell">
                         <div className="page_card">

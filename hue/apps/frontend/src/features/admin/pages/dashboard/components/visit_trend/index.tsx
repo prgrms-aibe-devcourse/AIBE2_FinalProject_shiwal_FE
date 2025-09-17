@@ -6,11 +6,13 @@ type Point = { date: string; visitors: number };
 
 // 더미
 const data: Point[] = [
-    { date: '01-01', visitors: 145_632 },
-    { date: '01-08', visitors: 191_472 },
-    { date: '01-15', visitors: 89_375 },
-    { date: '01-22', visitors: 246_904 },
-    { date: '01-29', visitors: 103_408 },
+    { date: '06-01', visitors: 3464 },
+    { date: '07-01', visitors: 12466 },
+    { date: '08-01', visitors: 6789 },
+    { date: '09-01', visitors: 20592 },
+    { date: '10-01', visitors: 4124 },
+    { date: '11-01', visitors: 13211 },
+    { date: '12-01', visitors: 4678 }
 ];
 
 const VisitTrend = () => {

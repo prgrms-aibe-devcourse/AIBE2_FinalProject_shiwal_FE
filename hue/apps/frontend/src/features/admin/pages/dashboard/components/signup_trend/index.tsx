@@ -6,11 +6,13 @@ type Point = { date: string; signups: number };
 
 // 더미
 const data: Point[] = [
-    { date: '01-01', signups: 8123 },
-    { date: '01-08', signups: 15422 },
-    { date: '01-15', signups: 9744 },
-    { date: '01-22', signups: 18732 },
-    { date: '01-29', signups: 13211 },
+    { date: '06-01', signups: 8123 },
+    { date: '07-01', signups: 15422 },
+    { date: '08-01', signups: 9744 },
+    { date: '09-01', signups: 18732 },
+    { date: '10-01', signups: 7055 },
+    { date: '11-01', signups: 13211 },
+    { date: '12-01', signups: 16824 }
 ];
 
 const SignupTrend = () => {

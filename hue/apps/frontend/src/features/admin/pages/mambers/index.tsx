@@ -1,4 +1,3 @@
-// src/features/admin/pages/members/index.tsx
 import './members.css'
 import Member_table from './components/member_table'
 import { mock_members, type member_row } from './data'
@@ -8,7 +7,6 @@ const Members_page = () => {
     const [rows, set_rows] = useState<member_row[]>(mock_members)
 
     const issue_temp_pw = (r: member_row) => {
-        // TODO: API 호출 자리
         alert(`임시비밀번호 발급: ${r.name} (${r.user_id})`)
     }
 
@@ -19,15 +17,12 @@ const Members_page = () => {
     }
 
     const open_actions = (r: member_row) => {
-        // TODO: 우측 슬라이드 패널/메뉴
         alert(`액션 메뉴: ${r.name}`)
     }
 
     return (
         <div className="members_wrap">
             <h1>관리자 계정</h1>
-
-            {/* 상단 컨트롤은 다음 턴에 붙임 */}
             <section className="panel">
                 <div className="row">
                     <button className="btn">사용자 목록</button>

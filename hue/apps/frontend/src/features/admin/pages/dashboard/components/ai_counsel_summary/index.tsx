@@ -2,7 +2,7 @@ import './ai_counsel_summary.css'
 
 type Risk_item = {
     nickname: string
-    tags: string[] // 예: ["진로", "학업", "우울", "자살"]
+    tags: string[]
 }
 
 const AiCounselSummary = () => {

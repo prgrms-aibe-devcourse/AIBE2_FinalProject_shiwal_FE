@@ -11,7 +11,6 @@
 .panel { background:#fff; border-radius:12px; padding:16px; overflow:hidden; }
 .panel h3 { margin:0 0 8px; font-size:14px; color:#495057; }
 
-/* 차트/그래프가 카드 폭 넘지 않도록 */
 .panel > svg,
 .panel > canvas,
 .panel > div { width:100%; max-width:100%; }

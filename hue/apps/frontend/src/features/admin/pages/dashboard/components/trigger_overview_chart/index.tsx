@@ -4,10 +4,13 @@ import {
 
 // 더미
 const data = [
-    { month: '1월', self_harm: 4, violence: 8, hate: 5, profanity: 7 },
-    { month: '2월', self_harm: 6, violence: 5, hate: 3, profanity: 4 },
-    { month: '3월', self_harm: 5, violence: 7, hate: 4, profanity: 6 },
-    { month: '4월', self_harm: 7, violence: 6, hate: 6, profanity: 5 },
+    { month: '1월', 위험발언: 4, 폭력발언: 8, 혐오발언: 5, 욕설: 3 },
+    { month: '2월', 위험발언: 6, 폭력발언: 3, 혐오발언: 3, 욕설: 1 },
+    { month: '3월', 위험발언: 5, 폭력발언: 7, 혐오발언: 4, 욕설: 6 },
+    { month: '4월', 위험발언: 4, 폭력발언: 6, 혐오발언: 6, 욕설: 5 },
+    { month: '5월', 위험발언: 2, 폭력발언: 4, 혐오발언: 2, 욕설: 2 },
+    { month: '6월', 위험발언: 1, 폭력발언: 2, 혐오발언: 5, 욕설: 4 },
+    { month: '7월', 위험발언: 2, 폭력발언: 5, 혐오발언: 1, 욕설: 6 }
 ]
 
 const TriggerOverviewChart = () => {
@@ -19,10 +22,10 @@ const TriggerOverviewChart = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="self_harm" stackId="a" />
-                    <Bar dataKey="violence" stackId="a" />
-                    <Bar dataKey="hate" stackId="a" />
-                    <Bar dataKey="profanity" stackId="a" />
+                    <Bar dataKey="위험발언" stackId="a" fill="#ef4444"/>
+                    <Bar dataKey="폭력발언" stackId="a" fill="#3b82f6"/>
+                    <Bar dataKey="혐오발언" stackId="a" fill="#facc15"/>
+                    <Bar dataKey="욕설" stackId="a" fill="#22c55e"/>
                 </BarChart>
             </ResponsiveContainer>
         </div>

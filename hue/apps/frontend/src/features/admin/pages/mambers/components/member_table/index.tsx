@@ -6,7 +6,6 @@ import './table.css'
 type props = {
     rows: member_row[]
     page_size?: number
-    on_issue_temp_pw?: (row: member_row) => void
     on_toggle_account?: (row: member_row, next: boolean) => void
     on_open_actions?: (row: member_row) => void
 }
@@ -28,7 +27,6 @@ const state_kor: Record<member_state,string> = {
 export default function member_table({
                                          rows,
                                          page_size = 10,
-                                         on_issue_temp_pw,
                                          on_toggle_account,
                                          on_open_actions,
                                      }: props) {
@@ -47,7 +45,6 @@ export default function member_table({
                 <div>권한/상태</div>
                 <div>전화번호</div>
                 <div>가입일</div>
-                <div>임시비밀번호</div>
                 <div>계정상태</div>
                 <div></div>
             </div>
@@ -68,26 +65,16 @@ export default function member_table({
                     <div className="m_cell">{r.join_date}</div>
 
                     <div className="m_cell">
-                        <button
-                            className="badge_btn"
-                            onClick={() => on_issue_temp_pw?.(r)}
-                        >
-                            발급
-                        </button>
-                    </div>
-
-                    <div className="m_cell">
                         <label className="switch">
                             <input
                                 type="checkbox"
                                 checked={r.account_on}
-                                onChange={(e) => on_toggle_account?.(r, e.target.checked)}
-                            />
+                                onChange={(e) => on_toggle_account?.(r, e.target.checked)}/>
                             <span className="slider" />
                         </label>
                         <span className={`onoff ${r.account_on ? 'on' : 'off'}`}>
-              {r.account_on ? 'ON' : 'OFF'}
-            </span>
+                             {r.account_on ? 'ON' : 'OFF'}
+                        </span>
                     </div>
 
                     <div className="m_cell actions">
