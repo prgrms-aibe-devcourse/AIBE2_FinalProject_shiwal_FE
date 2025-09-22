@@ -325,15 +325,20 @@ p {
 
 /* 프로필 이미지 */
 .profile-image img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  background-color: #ffffff;
+}
+
+.profile-image {
+  margin: 40px auto 20px auto;
 }
 
 /* 개인정보 */
 .profile-info {
-  margin: 10px 0;
+  margin: 0 60px;
+  font-size: 20px;
 }
 
 .row {
@@ -341,44 +346,51 @@ p {
   align-items: center;
   justify-content: flex-start;
   margin: 8px 0;
+  /*gap: 10px;*/
 }
 
 .label {
-  width: 80px;
-  font-weight: bold;
-  color: #555;
+  width: 100px;
+  height: 40px;
+  color: #a9b3b0;
   text-align: left;
+  align-content: center;
 }
 
 .value {
   flex: 1;
-  color: #333;
+  color: #717776;
   text-align: left;
+  height: 40px;
+  align-content: center;
 }
 
 .edit-btn {
-  background: #d9eae7;
+  background: #cfe3de;
   border: none;
-  border-radius: 8px;
-  padding: 4px 10px;
-  font-size: 12px;
+  border-radius: 15px;
+  padding: 8px 15px;
+  font-size: 17px;
   cursor: pointer;
+  color: #9baaa7;
 }
 
 /* 동의 스위치 박스 */
 .toggle-box {
-  margin: 20px 0;
-  background: #cfe2de;
-  border-radius: 10px;
+  margin: 20px 50px;
+  background: #c6ded8;
+  border-radius: 20px;
   padding: 10px;
   text-align: left;
+  font-size: 18px;
+  color: #636f6c;
 }
 
 .toggle-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0;
+  margin: 10px 15px;
 }
 
 /* 토글 스위치 디자인 */
@@ -405,8 +417,8 @@ p {
 .slider:before {
   position: absolute;
   content: "";
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   background: white;
   bottom: 3px;
@@ -414,7 +426,7 @@ p {
   transition: 0.3s;
 }
 .switch input:checked + .slider {
-  background: #5cb99d;
+  background: #ABCFC5;
 }
 .switch input:checked + .slider:before {
   transform: translateX(16px);
@@ -425,20 +437,17 @@ p {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .logout,
 .withdraw {
-  padding: 8px 14px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
-  font-size: 14px;
-}
-.logout {
-  background: #cfe2de;
-}
-.withdraw {
-  background: #b7c7c4;
+  font-size: 17px;
+  color: #636f6c;
+  background: #c6ded8;
 }
