@@ -13,6 +13,15 @@ import AdminLayout from './features/admin/layouts/admin_layout'
 import ContentsPage from './features/admin/pages/contents'
 
 import PrivateRoute from './components/PrivateRoute';
+import HealingMain from './pages/healing/HealingMain'
+import MusicMain from './pages/healing/sound/MusicMain'
+import NatureSound from './pages/healing/sound/NatureSound'
+import WhiteNoise from './pages/healing/sound/WhiteNoise'
+import BreathMain from './pages/healing/meditation/BreathMain'
+import ShortMeditation from './pages/healing/meditation/ShortMeditation'
+import SimpleStretch from './pages/healing/meditation/SimpleStretch'
+import DrawingMain from './pages/healing/creation/DrawingMain'
+import Canvas from './pages/healing/creation/Canvas'
 
 
 function AppContent() {
@@ -36,7 +45,6 @@ function AppContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/aichat" element={<AIchat />} />
-
                 {/* PrivateRoute 적용 */}
                 <Route
                     path="/profile"
@@ -56,6 +64,20 @@ function AppContent() {
                 />
 
                 {/* /admin 기본 이동 */}
+
+                <Route path="/healing" element={<HealingMain />} />
+
+                <Route path="/healing/sound" element={<MusicMain />} />
+                <Route path="/healing/sound/nature" element={<NatureSound />} />
+                <Route path="/healing/sound/whitenoise" element={<WhiteNoise />} />
+
+                <Route path="/healing/meditation/breath" element={<BreathMain />} />
+                <Route path="/healing/meditation/short" element={<ShortMeditation />} />
+                <Route path="/healing/meditation" element={<SimpleStretch />} />
+
+                <Route path="/healing/creation" element={<DrawingMain />} />
+                <Route path="/healing/creation/canvas" element={<Canvas />} />
+
                 <Route path="/" element={<Navigate to="/admin" replace />} />
                 <Route path="/admin" element={<AdminLayout />}>
                     <Route index element={<Dashboard />} />               {/* /admin */}
