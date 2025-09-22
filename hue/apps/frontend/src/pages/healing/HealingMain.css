@@ -1,0 +1,120 @@
+.healing-wrapper {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+.healing-main-wrapper {
+    display: flex;
+    width: 200%;
+    transform: translateX(0%);
+    transition: transform 0.6s ease;
+}
+
+.healing-main-wrapper.slide {
+    transform: translateX(-50%);
+}
+
+.healing-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: justify-content 0.5s ease;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: justify-content 0.5s ease;
+}
+
+.left-panel {
+    width: 100%;
+    padding: 20px;
+    max-width: 600px;
+    transition: all 0.5s ease;
+}
+.left-panel.shrink {
+    width: 30%;
+}
+.right-panel {
+    width: 50%;
+    padding: 20px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    min-height: 100%;
+    pointer-events: none;
+}
+.right-panel.show {
+    transform: translateX(0%);
+    opacity: 1;
+    pointer-events: auto;
+}
+.healing-container.active {
+    justify-content: flex-start;
+}
+.healing-main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Pretendard', sans-serif;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.healing-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.healing-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #e5ddf5;
+    padding: 24px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.left {
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 24px;
+    padding-right: 24px;
+    border-right: 1px solid #999;  /* ← 세로 구분선 추가 */
+    flex-shrink: 0;
+}
+
+.right p {
+    margin: 4px 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.right p:hover {
+    color: #8a2be2;
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

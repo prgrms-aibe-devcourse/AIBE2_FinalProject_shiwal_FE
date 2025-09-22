@@ -12,6 +12,16 @@ import MembersPage from './features/admin/pages/mambers'
 import AdminLayout from './features/admin/layouts/admin_layout'
 import ContentsPage from './features/admin/pages/contents'
 
+import HealingMain from './pages/healing/HealingMain'
+import MusicMain from './pages/healing/sound/MusicMain'
+import NatureSound from './pages/healing/sound/NatureSound'
+import WhiteNoise from './pages/healing/sound/WhiteNoise'
+import BreathMain from './pages/healing/meditation/BreathMain'
+import ShortMeditation from './pages/healing/meditation/ShortMeditation'
+import SimpleStretch from './pages/healing/meditation/SimpleStretch'
+import DrawingMain from './pages/healing/creation/DrawingMain'
+import Canvas from './pages/healing/creation/Canvas'
+
 
 function AppContent() {
     const location = useLocation();
@@ -36,6 +46,20 @@ function AppContent() {
                 <Route path="/aichat" element={<AIchat />} />
                 <Route path="/aichat/history" element={<AIchatHis />} />
                 <Route path="/profile" element={<Profile />} />
+
+                <Route path="/healing" element={<HealingMain />} />
+
+                <Route path="/healing/sound" element={<MusicMain />} />
+                <Route path="/healing/sound/nature" element={<NatureSound />} />
+                <Route path="/healing/sound/whitenoise" element={<WhiteNoise />} />
+
+                <Route path="/healing/meditation/breath" element={<BreathMain />} />
+                <Route path="/healing/meditation/short" element={<ShortMeditation />} />
+                <Route path="/healing/meditation" element={<SimpleStretch />} />
+
+                <Route path="/healing/creation" element={<DrawingMain />} />
+                <Route path="/healing/creation/canvas" element={<Canvas />} />
+
                 <Route path="/" element={<Navigate to="/admin" replace />} />
                 <Route path="/admin" element={<AdminLayout />}>
                     <Route index element={<Dashboard />} />               {/* /admin */}
