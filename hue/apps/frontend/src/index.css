@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Pretendard", sans-serif; /* 기본 폰트 */
+  /*justify-content: center; !* 가로 가운데 *!*/
+  /*align-items: center;    !* 세로 가운데 *!*/
 }
 
 body.white-bg {
@@ -14,17 +16,22 @@ body.gray-bg {
 
 /* 메인 */
 .main-box-col {
+  background: #ffffff;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px auto;
-  width: 600px;
-  background: #fff;
+  justify-content: center;
+  /*align-items: start;*/
+  margin: 30px;
+  width: 75%;
   border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-left: auto;
+  margin-right: auto;
+  /*padding: 32px;*/
+  height: 800px;
 }
-.main-box-row { /* 건들 ㄴ */
+
+.main-box-row {
   background: #ffffff;
   flex: 1;
   display: flex;
@@ -42,7 +49,7 @@ body.gray-bg {
 }
 
 .title {
-  font-size: 30px;
+  font-size: 35px;
   margin-bottom: 20px; /* title과 green-box 간격 */
   text-align: center;
   color: #404040;
@@ -54,6 +61,7 @@ body.gray-bg {
   display: flex;
   flex-direction: column;
   border-radius: 15px;
+
   margin: 0 auto;  /* 가운데 정렬 */
   flex: 1;         /* 남은 공간을 차지하도록 */
   margin-bottom: 10px;
@@ -196,12 +204,12 @@ body.gray-bg {
 
 
 /*AIchatHis*/
-.title {
-  color: #404040;
-  font-size: 30px;
-  margin-bottom: 20px;
-  text-align: center;
-}
+/*.title {*/
+/*  color: #404040;*/
+/*  font-size: 30px;*/
+/*  margin-bottom: 20px;*/
+/*  text-align: center;*/
+/*}*/
 
 .search-filter {
   display: flex;
@@ -299,20 +307,38 @@ body.gray-bg {
 
 p {
   margin: 15px 0px 15px 10px;
-  color: #808080;
 }
 
 /*프로필*/
+/* 프로필 메인 박스 */
+.main-box-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  width: 600px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* 프로필 이미지 */
 .profile-image img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  background-color: #ffffff;
+}
+
+.profile-image {
+  margin: 40px auto 20px auto;
 }
 
 /* 개인정보 */
 .profile-info {
-  margin: 10px 0;
+  margin: 0 60px;
+  font-size: 20px;
 }
 
 .row {
@@ -320,44 +346,51 @@ p {
   align-items: center;
   justify-content: flex-start;
   margin: 8px 0;
+  /*gap: 10px;*/
 }
 
 .label {
-  width: 80px;
-  font-weight: bold;
-  color: #555;
+  width: 100px;
+  height: 40px;
+  color: #a9b3b0;
   text-align: left;
+  align-content: center;
 }
 
 .value {
   flex: 1;
-  color: #333;
+  color: #717776;
   text-align: left;
+  height: 40px;
+  align-content: center;
 }
 
 .edit-btn {
-  background: #d9eae7;
+  background: #cfe3de;
   border: none;
-  border-radius: 8px;
-  padding: 4px 10px;
-  font-size: 12px;
+  border-radius: 15px;
+  padding: 8px 15px;
+  font-size: 17px;
   cursor: pointer;
+  color: #9baaa7;
 }
 
 /* 동의 스위치 박스 */
 .toggle-box {
-  margin: 20px 0;
-  background: #cfe2de;
-  border-radius: 10px;
+  margin: 20px 50px;
+  background: #c6ded8;
+  border-radius: 20px;
   padding: 10px;
   text-align: left;
+  font-size: 18px;
+  color: #636f6c;
 }
 
 .toggle-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0;
+  margin: 10px 15px;
 }
 
 /* 토글 스위치 디자인 */
@@ -384,8 +417,8 @@ p {
 .slider:before {
   position: absolute;
   content: "";
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   background: white;
   bottom: 3px;
@@ -393,7 +426,7 @@ p {
   transition: 0.3s;
 }
 .switch input:checked + .slider {
-  background: #5cb99d;
+  background: #ABCFC5;
 }
 .switch input:checked + .slider:before {
   transform: translateX(16px);
@@ -404,20 +437,17 @@ p {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .logout,
 .withdraw {
-  padding: 8px 14px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
-  font-size: 14px;
-}
-.logout {
-  background: #cfe2de;
-}
-.withdraw {
-  background: #b7c7c4;
+  font-size: 17px;
+  color: #636f6c;
+  background: #c6ded8;
 }

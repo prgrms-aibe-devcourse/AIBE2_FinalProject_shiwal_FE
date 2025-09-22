@@ -12,6 +12,7 @@ import MembersPage from './features/admin/pages/mambers'
 import AdminLayout from './features/admin/layouts/admin_layout'
 import ContentsPage from './features/admin/pages/contents'
 
+import PrivateRoute from './components/PrivateRoute';
 import HealingMain from './pages/healing/HealingMain'
 import MusicMain from './pages/healing/sound/MusicMain'
 import NatureSound from './pages/healing/sound/NatureSound'
@@ -44,8 +45,25 @@ function AppContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/aichat" element={<AIchat />} />
-                <Route path="/aichat/history" element={<AIchatHis />} />
-                <Route path="/profile" element={<Profile />} />
+                {/* PrivateRoute 적용 */}
+                <Route
+                    path="/profile"
+                    element={
+                        <PrivateRoute>
+                            <Profile />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/aichat/history"
+                    element={
+                        <PrivateRoute>
+                            <AIchatHis />
+                        </PrivateRoute>
+                    }
+                />
+
+                {/* /admin 기본 이동 */}
 
                 <Route path="/healing" element={<HealingMain />} />
 

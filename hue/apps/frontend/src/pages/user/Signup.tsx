@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Checkbox from "../../components/Checkbox.tsx";
 import "../../styles/Login.css";
 
@@ -10,13 +10,42 @@ export default function Signup() {
     const [n, setN] = useState("");
     const [nickname, setNickname] = useState("");
     const [service, setService] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-    const onSubmit = (e: React.FormEvent) => {
+    const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: 실제 회원가입 로직(서버 호출) 넣기
-        console.log("회원가입 시도:", { email, password, n, nickname });
-        // 로그인 성공 시 메인 페이지로 이동
-        navigate("/login");
+
+        if (!service) {
+            setError("이용약관에 동의해야 합니다.");
+            return;
+        }
+
+        const payload = {
+            email,
+            password,
+            name: n,
+            nickname,
+        };
+
+        try {
+            const response = await fetch("/auth/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.message || "회원가입에 실패했습니다.");
+                return;
+            }
+
+            navigate("/login");
+        } catch (err) {
+            setError("서버와의 통신에 실패했습니다.");
+        }
     };
 
     return (
@@ -81,9 +110,10 @@ export default function Signup() {
                         </Checkbox>
                     </div>
 
+                    {error && <div className="error-message">{error}</div>}
 
                     <button type="submit" className="btn btn-primary">
-                        <Link to="/Login">회원가입</Link>
+                        회원가입
                     </button>
                 </form>
 

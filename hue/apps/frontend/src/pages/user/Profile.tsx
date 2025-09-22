@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+    const navigate = useNavigate();
     // 추후 백엔드에서 불러올 데이터 (지금은 더미)
     const [name, setName] = useState("김땡땡");
     const [email, setEmail] = useState("email1234@gmail.com");
@@ -10,8 +12,43 @@ function Profile() {
     const [serviceAgree, setServiceAgree] = useState(false);
     const [dataAgree, setDataAgree] = useState(false);
 
+
+    const handleLogout = async () => {
+        try {
+            const accessToken = localStorage.getItem("accessToken");
+            if (!accessToken) {
+                throw new Error("로그인 상태가 아닙니다.");
+            }
+
+            const response = await fetch("/auth/logout?allDevices=false", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${accessToken}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("로그아웃 실패");
+            }
+
+            // 토큰 제거
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("tokenType");
+
+            console.log("로그아웃 성공 ✅");
+            console.log("현재 localStorage 상태:", localStorage);
+
+            // 로그인 페이지로 이동
+            navigate("/login");
+        } catch (err) {
+            console.error("로그아웃 중 오류 발생:", err);
+            alert("로그아웃 중 오류가 발생했습니다.");
+        }
+    };
+
     return (
-        <div className="main-box-col">
+        <div className="main-box-profile">
             <div className="title">나의 프로필</div>
             <section className="green-box">
                 {/* 프로필 이미지 */}
@@ -64,7 +101,9 @@ function Profile() {
 
                 {/* 하단 버튼 */}
                 <div className="action-buttons">
-                    <button className="logout">로그아웃</button>
+                    <button className="logout" onClick={handleLogout}>
+                        로그아웃
+                    </button>
                     <button className="withdraw">회원탈퇴</button>
                 </div>
             </section>
