@@ -5,14 +5,16 @@ import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import PrivateRoute from "@/components/PrivateRoute";
 
-// --- 관리자 레이아웃/페이지 ---
-import AdminLayout from "@/features/admin/layouts/admin_layout";
-import Dashboard from "@/features/admin/pages/dashboard";
-import Members from "@/features/admin/pages/mambers";
-import Contents from "@/features/admin/pages/contents";
-
 // --- 일반 페이지 ---
 import Home from "@/pages/Home";
+
+// 관리자(Admin)
+import AdminLayout from "./features/admin/layouts/admin_layout";
+import Dashboard from "./features/admin/pages/dashboard";
+import Members from "./features/admin/pages/mambers";
+import Contents from "./features/admin/pages/contents";
+import HealingEditor from "./features/admin/pages/contents/components/healing_editor";
+import SelftestEditor from "./features/admin/pages/contents/components/selftest_editor";
 
 // 챗
 import AIchat from "@/pages/chat/AIchat";
@@ -76,20 +78,27 @@ export default function App() {
         />
         <Route path="/goal" element={<Goal />} />
 
-        {/* 관리자 */}
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute>
-              <AdminLayout />
-            </PrivateRoute>
-          }
-        >
-          <Route index element={<Dashboard />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="members" element={<Members />} />
-          <Route path="contents" element={<Contents />} />
-        </Route>
+          {/* 관리자 */}
+          <Route
+              path="/admin"
+              element={
+                  <PrivateRoute>
+                      <AdminLayout />
+                  </PrivateRoute>
+              }
+          >
+              {/* /admin 기본 */}
+              <Route index element={<Dashboard />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="members" element={<Members />} />
+
+              {/* /admin/contents */}
+              <Route path="contents">
+                  <Route index element={<Contents />} />
+                  <Route path="healing" element={<HealingEditor />} />
+                  <Route path="self-assessment" element={<SelftestEditor />} />
+              </Route>
+          </Route>
 
         {/* fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
