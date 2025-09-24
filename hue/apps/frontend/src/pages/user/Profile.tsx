@@ -77,24 +77,24 @@ function Profile() {
                 <div className="toggle-box">
                     <div className="toggle-row">
                         서비스 알림 수신 동의
-                        <label className="switch">
+                        <label className="agree-switch">
                             <input
                                 type="checkbox"
                                 checked={serviceAgree}
                                 onChange={(e) => setServiceAgree(e.target.checked)}
                             />
-                            <span className="slider"></span>
+                            <span className="agree-slider"></span>
                         </label>
                     </div>
                     <div className="toggle-row">
                         데이터 수집 동의
-                        <label className="switch">
+                        <label className="agree-switch">
                             <input
                                 type="checkbox"
                                 checked={dataAgree}
                                 onChange={(e) => setDataAgree(e.target.checked)}
                             />
-                            <span className="slider"></span>
+                            <span className="agree-slider"></span>
                         </label>
                     </div>
                 </div>

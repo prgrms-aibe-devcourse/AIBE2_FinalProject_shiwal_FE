@@ -22,6 +22,7 @@ import ShortMeditation from './pages/healing/meditation/ShortMeditation'
 import SimpleStretch from './pages/healing/meditation/SimpleStretch'
 import DrawingMain from './pages/healing/creation/DrawingMain'
 import Canvas from './pages/healing/creation/Canvas'
+import Goal from "./pages/user/Goal.tsx";
 
 
 function AppContent() {
@@ -45,15 +46,18 @@ function AppContent() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/aichat" element={<AIchat />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/goal" element={<Goal />} />
+
                 {/* PrivateRoute 적용 */}
-                <Route
-                    path="/profile"
-                    element={
-                        <PrivateRoute>
-                            <Profile />
-                        </PrivateRoute>
-                    }
-                />
+                {/*<Route*/}
+                {/*    path="/profile"*/}
+                {/*    element={*/}
+                {/*        <PrivateRoute>*/}
+                {/*            <Profile />*/}
+                {/*        </PrivateRoute>*/}
+                {/*    }*/}
+                {/*/>*/}
                 <Route
                     path="/aichat/history"
                     element={
