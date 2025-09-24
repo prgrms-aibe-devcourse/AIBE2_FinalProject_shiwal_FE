@@ -9,7 +9,7 @@ export type member_row = {
     state: member_state
     phone: string
     join_date: string      // 'YYYY-MM-DD'
-    temp_pw_issued: boolean
+    // temp_pw_issued: boolean
     account_on: boolean    // 스위치 ON/OFF
 }
 
@@ -22,6 +22,6 @@ export const mock_members: member_row[] = Array.from({ length: 20 }).map((_, i) 
     state: (['active','active','active','suspended','inactive'][i % 5]) as member_state,
     phone: '010 1234 1234',
     join_date: '2025-08-27',
-    temp_pw_issued: false,
+    // temp_pw_issued: false,
     account_on: i % 4 !== 3, // 임의로 OFF 포함
 }))
