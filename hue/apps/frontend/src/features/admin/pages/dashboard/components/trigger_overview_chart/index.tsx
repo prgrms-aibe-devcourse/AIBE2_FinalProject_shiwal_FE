@@ -1,19 +1,26 @@
+import { useEffect, useState } from "react"
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer
-} from 'recharts'
+} from "recharts"
+import { AdminApi } from "../../../../../../lib/adminApi"
 
-// 더미
-const data = [
-    { month: '1월', 위험발언: 4, 폭력발언: 8, 혐오발언: 5, 욕설: 3 },
-    { month: '2월', 위험발언: 6, 폭력발언: 3, 혐오발언: 3, 욕설: 1 },
-    { month: '3월', 위험발언: 5, 폭력발언: 7, 혐오발언: 4, 욕설: 6 },
-    { month: '4월', 위험발언: 4, 폭력발언: 6, 혐오발언: 6, 욕설: 5 },
-    { month: '5월', 위험발언: 2, 폭력발언: 4, 혐오발언: 2, 욕설: 2 },
-    { month: '6월', 위험발언: 1, 폭력발언: 2, 혐오발언: 5, 욕설: 4 },
-    { month: '7월', 위험발언: 2, 폭력발언: 5, 혐오발언: 1, 욕설: 6 }
-]
+type ChartRow = { month: string; chat: number; assess: number }
 
 const TriggerOverviewChart = () => {
+    const [data, setData] = useState<ChartRow[]>([])
+
+    useEffect(() => {
+        // 최근 7개월 데이터 가져오기
+        AdminApi.getHighRiskMonthlySplit(7).then(res => {
+            const merged = res.labels.map((label, i) => ({
+                month: label,
+                chat: res.chat[i],
+                assess: res.assess[i],
+            }))
+            setData(merged)
+        })
+    }, [])
+
     return (
         <div style={{ height: 300 }}>
             <ResponsiveContainer width="100%" height="100%">
@@ -22,10 +29,8 @@ const TriggerOverviewChart = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="위험발언" stackId="a" fill="#ef4444"/>
-                    <Bar dataKey="폭력발언" stackId="a" fill="#3b82f6"/>
-                    <Bar dataKey="혐오발언" stackId="a" fill="#facc15"/>
-                    <Bar dataKey="욕설" stackId="a" fill="#22c55e"/>
+                    <Bar dataKey="chat" name="AI 상담 고위험" stackId="a" fill="#3b82f6" />
+                    <Bar dataKey="assess" name="자가진단 고위험" stackId="a" fill="#ef4444" />
                 </BarChart>
             </ResponsiveContainer>
         </div>
