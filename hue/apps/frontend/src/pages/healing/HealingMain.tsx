@@ -1,16 +1,21 @@
 import { useState } from "react";
 import MusicMain from './sound/MusicMain';
-import NatureSound from './sound/NatureSound';
-import WhiteNoise from './sound/WhiteNoise';
 import BreathMain from './meditation/BreathMain';
-import ShortMeditation from './meditation/ShortMeditation';
-import SimpleStretch from './meditation/SimpleStretch';
 import DrawingMain from './creation/DrawingMain';
-import Canvas from './creation/Canvas';
 import './HealingMain.css'
 
 const HealingMain = () => {
 const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    const handleClickSound = () => {
+        setActiveCategory('sound');
+    };
+
+    const handleClickMeditation = () => {
+        setActiveCategory('meditation');
+    };
+    const handleClickCreation = () => {
+        setActiveCategory('creation');
+    };
 
     return (
         <div className="healing-wrapper">
@@ -26,29 +31,29 @@ const [activeCategory, setActiveCategory] = useState<string | null>(null);
         </div>
 
             <div className="healing-section">
-                <div className="healing-box">
+                <div className="healing-box" onClick={handleClickSound}>
                     <div className="left">음악 & 사운드</div>
                     <div className="right">
-                        <p onClick={() => setActiveCategory('sound_music')}>기분별 음악 플레이리스트</p>
-                        <p onClick={() => setActiveCategory('sound_nature')}>자연의 소리</p>
-                        <p onClick={() => setActiveCategory('sound_white')}>백색소음 계열</p>
+                        <p onClick={(e) => e.stopPropagation()}>맞춤 음악 플레이리스트</p>
+                        <p onClick={(e) => e.stopPropagation()}>자연의 소리</p>
+                        <p onClick={(e) => e.stopPropagation()}>백색소음 계열</p>
                     </div>
                 </div>
 
-                <div className="healing-box">
+                <div className="healing-box" onClick={handleClickMeditation}>
                     <div className="left">명상 & 호흡</div>
                     <div className="right">
-                        <p onClick={() => setActiveCategory('breath_guide')}>호흡 가이드</p>
-                        <p onClick={() => setActiveCategory('breath_meditation')}>짧은 명상</p>
-                        <p onClick={() => setActiveCategory('breath_stretch')}>간단 스트레칭</p>
+                        <p onClick={(e) => e.stopPropagation()}>호흡 가이드</p>
+                        <p onClick={(e) => e.stopPropagation()}>짧은 명상</p>
+                        <p onClick={(e) => e.stopPropagation()}>간단 스트레칭</p>
                     </div>
                 </div>
 
-                <div className="healing-box">
+                <div className="healing-box" onClick={handleClickCreation}>
                     <div className="left">창작 & 몰입</div>
                     <div className="right">
-                        <p onClick={() => setActiveCategory('creation_color')}>색칠놀이</p>
-                        <p onClick={() => setActiveCategory('creation_canvas')}>그림 캔버스</p>
+                        <p onClick={(e) => e.stopPropagation()}>색칠놀이</p>
+                        <p onClick={(e) => e.stopPropagation()}>그림 캔버스</p>
                     </div>
                 </div>
             </div>
@@ -57,16 +62,9 @@ const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
 
             <div className={`right-panel ${activeCategory ? 'show' : ''}`}>
-                    {activeCategory === 'sound_music' && <MusicMain />}
-                    {activeCategory === 'sound_nature' && <NatureSound />}
-                    {activeCategory === 'sound_white' && <WhiteNoise />}
-
-                    {activeCategory === 'breath_guide' && <BreathMain />}
-                    {activeCategory === 'breath_meditation' && <ShortMeditation />}
-                    {activeCategory === 'breath_stretch' && <SimpleStretch />}
-
-                    {activeCategory === 'creation_color' && <DrawingMain />}
-                    {activeCategory === 'creation_canvas' && <Canvas />}
+                {activeCategory === 'sound' && <MusicMain />}
+                {activeCategory === 'meditation' && <BreathMain />}
+                {activeCategory === 'creation' && <DrawingMain />}
                 </div>
             </div>
         </div>

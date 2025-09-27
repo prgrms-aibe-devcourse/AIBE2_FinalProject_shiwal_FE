@@ -2,7 +2,7 @@ const SimpleStretch = () => {
     return (
         <div className="slide-box">
             <h3>간단 스트레칭</h3>
-            <p>몸을 가볍게 풀어주는 스트레칭으로 하루를 시작하세요.</p>
+            <p>목.어깨.손목을 풀어주는 가벼운 스트레칭으로 긴장을 완화하세요.</p>
         </div>
     );
 };

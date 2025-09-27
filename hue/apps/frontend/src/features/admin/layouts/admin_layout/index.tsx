@@ -12,8 +12,6 @@ const AdminLayout = () => {
     }, [pathname])
 
     return (
-        <div className="admin_layout">
-            <header className="admin_header">상단(로고/메뉴)</header>
 
             <div className="admin_body">
                 <aside className="admin_sidebar">
@@ -68,7 +66,6 @@ const AdminLayout = () => {
                     </div>
                 </main>
             </div>
-        </div>
     )
 }
 

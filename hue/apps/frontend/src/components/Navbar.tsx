@@ -1,44 +1,25 @@
-// src/components/Navbar.tsx
-import { NavLink, Link } from "react-router-dom";
-import "./Navbar.css";
+import { Link } from "react-router-dom";
+import "./Navbar.css"; // 스타일 따로 관리
 
 function Navbar() {
-  const cx = (isActive: boolean) => `nav-link${isActive ? " active" : ""}`;
-
-  return (
-    <nav className="navbar">
-      <div className="nav-left">
-        <Link to="/" className="logo">
-          <img src="/logo.png" alt="휴 로고" className="nav-logo-img" />
-        </Link>
-
-        <NavLink to="/aichat" className={({ isActive }) => cx(isActive)}>
-          휴봇과 상담
-        </NavLink>
-        <NavLink to="/healing" className={({ isActive }) => cx(isActive)}>
-          힐링 컨텐츠
-        </NavLink>
-        <NavLink to="/analysis" className={({ isActive }) => cx(isActive)}>
-          심리 분석
-        </NavLink>
-        <NavLink to="/community" className={({ isActive }) => cx(isActive)}>
-          커뮤니티
-        </NavLink>
-        <NavLink to="/selftest" className={({ isActive }) => cx(isActive)}>
-          자기분석 테스트
-        </NavLink>
-      </div>
-
-      <div className="nav-right">
-        <NavLink to="/login" className={({ isActive }) => cx(isActive)}>
-          로그인
-        </NavLink>
-        <NavLink to="/signup" className={({ isActive }) => cx(isActive)}>
-          회원가입
-        </NavLink>
-      </div>
-    </nav>
-  );
+    return (
+        <nav className="navbar">
+            <div className="nav-left">
+                <Link to="/" className="logo">
+                    <img src="/logo.png" alt="휴 로고" className="nav-logo-img" />
+                </Link>
+                <Link to="/aichat">휴봇과 상담</Link>
+                <Link to="/healing">힐링 컨텐츠</Link>
+                <Link to="/">심리 분석</Link>
+                <Link to="/">커뮤니티</Link>
+                <Link to="/">자기분석 테스트</Link>
+            </div>
+            <div className="nav-right">
+                <Link to="/login">로그인</Link>
+                <Link to="/signup">회원가입</Link>
+            </div>
+        </nav>
+    );
 }
 
 export default Navbar;
