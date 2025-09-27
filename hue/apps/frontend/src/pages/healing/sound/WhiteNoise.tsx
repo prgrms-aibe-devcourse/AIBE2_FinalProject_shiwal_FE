@@ -1,6 +1,6 @@
 import './Sound.css'
 
-const MusicMain = () => {
+const WhiteNoise = () => {
     return (
         <div className="healing-content">
             <h2>음악 & 사운드</h2>
@@ -28,4 +28,4 @@ const MusicMain = () => {
     );
 };
 
-export default MusicMain;
+export default WhiteNoise;
