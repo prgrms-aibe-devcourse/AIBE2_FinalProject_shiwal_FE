@@ -1,18 +1,29 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// 메인(index.html)은 팀 UI 그대로 사용하고,
+// 개발용(dev.html)만 별도 엔트리로 추가.
 export default defineConfig({
   plugins: [react()],
-  // root: 'apps/frontend', // 프로젝트 루트 지정
-  server: { // 프록시 설정 추가
-    // 이 경우, fetch URL은 http://localhost:8080/auth/signup이 아닌 /auth/signup으로 해야 작동
+  server: {
+    port: 5173,
+    strictPort: true,
+    open: true,
     proxy: {
-      '/auth': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      }
-    }
-  }
+      '/api':   { target: 'http://localhost:8080', changeOrigin: true },
+      '/admin': { target: 'http://localhost:8080', changeOrigin: true },
+    },
+  },
+  resolve: { alias: { '@': '/src' } },
+  build: {
+    sourcemap: true,
+    rollupOptions: {
+      // 상대 경로로 충분합니다 (node:url, __dirname 불필요)
+      input: {
+        main: 'index.html',
+        dev:  'dev.html',
+      },
+    },
+  },
+  preview: { port: 4173 },
 })

@@ -1,16 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
-import { useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Login from "./pages/user/Login.tsx";
-import Signup from "./pages/user/Signup.tsx";
-import AIchat from "./pages/chat/AIchat.tsx";
-import AIchatHis from "./pages/chat/AIchatHis.tsx";
-import Profile from "./pages/user/Profile.tsx";
-import Dashboard from './features/admin/pages/dashboard'
-import MembersPage from './features/admin/pages/mambers'
-import AdminLayout from './features/admin/layouts/admin_layout'
-import ContentsPage from './features/admin/pages/contents'
+// src/App.tsx
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
+
 
 import PrivateRoute from './components/PrivateRoute';
 import HealingMain from './pages/healing/HealingMain'
@@ -24,9 +14,23 @@ import DrawingMain from './pages/healing/creation/DrawingMain'
 import Canvas from './pages/healing/creation/Canvas'
 import Goal from "./pages/user/Goal.tsx";
 
+// 공통 UI
+import Navbar from "@/components/Navbar";
+import PrivateRoute from "@/components/PrivateRoute";
 
-function AppContent() {
-    const location = useLocation();
+
+// 관리자 레이아웃/페이지 (네가 말한 경로/이름 그대로)
+import AdminLayout from "@/features/admin/layouts/admin_layout";
+import Dashboard from "@/features/admin/pages/dashboard";
+import Members from "@/features/admin/pages/mambers";
+import Contents from "@/features/admin/pages/contents";
+
+// 일반 페이지 (네가 말한 경로/이름 그대로)
+import Home from "@/pages/Home";
+import AIchat from "@/pages/chat/AIchat";
+import AIchatHis from "@/pages/chat/AIchatHis";
+import HealingMain from "@/pages/healing/HealingMain";
+
 
     useEffect(() => {
         if (location.pathname === "/login" || location.pathname === "/signup") {
@@ -71,34 +75,56 @@ function AppContent() {
 
                 <Route path="/healing" element={<HealingMain />} />
 
-                <Route path="/healing/sound" element={<MusicMain />} />
-                <Route path="/healing/sound/nature" element={<NatureSound />} />
-                <Route path="/healing/sound/whitenoise" element={<WhiteNoise />} />
-
-                <Route path="/healing/meditation/breath" element={<BreathMain />} />
-                <Route path="/healing/meditation/short" element={<ShortMeditation />} />
-                <Route path="/healing/meditation" element={<SimpleStretch />} />
-
-                <Route path="/healing/creation" element={<DrawingMain />} />
-                <Route path="/healing/creation/canvas" element={<Canvas />} />
-
-                <Route path="/" element={<Navigate to="/admin" replace />} />
-                <Route path="/admin" element={<AdminLayout />}>
-                    <Route index element={<Dashboard />} />               {/* /admin */}
-                    <Route path="members" element={<MembersPage />} />    {/* /admin/members */}
-                    <Route path="contents" element={<ContentsPage />} />  {/* /admin/contents */}
-                </Route>
-            </Routes>
-        </>
-    );
+function RootWithNavbar() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
 }
 
-function App() {
-    return (
-        <Router>
-            <AppContent />
-        </Router>
-    );
-}
 
-export default App;
+export default function App() {
+  return (
+    <Routes>
+      <Route element={<RootWithNavbar />}>
+        {/* 홈 */}
+        <Route path="/" element={<Home />} />
+
+        {/* 네비게이션과 맞춘 라우트 */}
+        <Route path="/aichat" element={<AIchat />} />
+        <Route path="/aichat/history" element={<AIchatHis />} />
+        <Route path="/healing" element={<HealingMain />} />
+
+        {/* 아직 페이지 미정이면 임시로 더미 화면 */}
+        <Route path="/analysis" element={<div style={{padding:24}}>심리 분석 페이지</div>} />
+        <Route path="/community" element={<div style={{padding:24}}>커뮤니티 페이지</div>} />
+        <Route path="/selftest" element={<div style={{padding:24}}>자기분석 테스트 페이지</div>} />
+
+        {/* 유저 */}
+        <Route path="/login" element={<div style={{padding:24}}>로그인 페이지</div>} />
+        <Route path="/signup" element={<div style={{padding:24}}>회원가입 페이지</div>} />
+        <Route path="/profile" element={<div style={{padding:24}}>프로필 페이지</div>} />
+
+        {/* 관리자 */}
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <AdminLayout />
+            </PrivateRoute>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="members" element={<Members />} />
+          <Route path="contents" element={<Contents />} />
+        </Route>
+
+        {/* fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
+  );
+}
