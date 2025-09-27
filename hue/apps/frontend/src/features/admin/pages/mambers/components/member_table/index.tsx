@@ -1,4 +1,3 @@
-// src/features/admin/pages/members/components/member_table/index.tsx
 import { useMemo, useState } from 'react'
 import type { member_row, member_role, member_state } from '../../data'
 import './table.css'
@@ -7,6 +6,7 @@ type props = {
     rows: member_row[]
     page_size?: number
     on_toggle_account?: (row: member_row, next: boolean) => void
+    on_issue_temp_pw: (row: member_row) => void;
     on_open_actions?: (row: member_row) => void
 }
 
@@ -24,7 +24,7 @@ const state_kor: Record<member_state,string> = {
     deleted: '탈퇴',
 }
 
-export default function member_table({
+export default function Member_table({
                                          rows,
                                          page_size = 10,
                                          on_toggle_account,
