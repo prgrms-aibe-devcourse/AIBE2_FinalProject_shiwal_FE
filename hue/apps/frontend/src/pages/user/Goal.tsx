@@ -96,7 +96,7 @@ const Goals: React.FC = () => {
 
                     {/* 오른쪽: 일일 진행도 (위) + 주간 진행도 (아래) */}
                     <div className="right-panel-goal">
-                        <div className="daily-progress card">
+                        <div className="daily-progress blue-card">
                             <div className="header-title">일일 진행도</div>
                             <div className="progress-steps">
                                 <div className={`step ${progress["접속"][todayDay] ? "active" : ""}`}>
@@ -118,7 +118,7 @@ const Goals: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="weekly-progress card">
+                        <div className="weekly-progress purple-card">
                             <div className="weekly-header">
                                 <div className="header-title">주간 진행도</div>
                                 <span className="week-range">8월 24일 ~ 30일</span>
