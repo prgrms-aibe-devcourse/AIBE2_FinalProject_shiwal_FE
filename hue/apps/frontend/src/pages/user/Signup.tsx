@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Checkbox from "../../components/Checkbox.tsx";
+import Checkbox from "../../components/Checkbox";
 import "../../styles/Login.css";
 
 export default function Signup() {
@@ -105,7 +105,7 @@ export default function Signup() {
                     <div className="agree-box">
                         <Checkbox checked={service} onChange={setService}>
                             <label htmlFor="agree" className="agree-text">
-                                이용약관 동의 (필수)
+                                 이용약관 동의 (필수)
                             </label>
                         </Checkbox>
                     </div>
