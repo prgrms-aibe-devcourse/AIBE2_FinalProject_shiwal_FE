@@ -4,7 +4,6 @@ import {
 
 type Point = { date: string; signups: number };
 
-// 더미
 const data: Point[] = [
     { date: '06-01', signups: 8123 },
     { date: '07-01', signups: 15422 },
