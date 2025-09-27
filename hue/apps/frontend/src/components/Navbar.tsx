@@ -24,7 +24,7 @@ function Navbar() {
                     <img src="/logo.png" alt="휴 로고" className="nav-logo-img" />
                 </Link>
                 <Link to="/aichat">휴봇과 상담</Link>
-                <Link to="/">힐링 컨텐츠</Link>
+                <Link to="/healing">힐링 컨텐츠</Link>
                 <Link to="/">심리 분석</Link>
                 <Link to="/">커뮤니티</Link>
                 <Link to="/">자기분석 테스트</Link>

@@ -64,3 +64,16 @@
     .admin_content { padding: 16px; }
     .page_card { padding: 16px; }
 }
+
+/* ▼ 콘텐츠 관리 하위 네비 스타일 */
+.side_parent { display:flex; align-items:center; justify-content:space-between; cursor:pointer; border:0; }
+.side_parent.is-open .side_caret { transform: rotate(180deg); }
+.side_caret { transition: transform .18s ease; }
+
+.side_subnav { display:flex; flex-direction:column; gap:8px; margin:6px 0 0 8px; }
+.side_sublink {
+    display:block; padding:10px 12px; border-radius:10px;
+    background:#eef7f3; color:#1a3c32; text-decoration:none; border:1px solid #cfe7db;
+}
+.side_sublink:hover { background:#e4f2ec; }
+.side_sublink.active { background:#dff7ee; border-color:#bfead9; font-weight:700; }
