@@ -2,7 +2,7 @@
 import './members.css'
 import MemberTable from './components/member_table'
 import { useEffect, useMemo, useState } from 'react'
-import { AdminApi } from '../../../../lib/adminApi'
+// import { AdminApi } from '../../../../lib/adminApi'
 
 type ApiUser = {
     id: number
