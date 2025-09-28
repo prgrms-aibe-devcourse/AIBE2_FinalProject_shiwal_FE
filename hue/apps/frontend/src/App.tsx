@@ -22,6 +22,14 @@ import SimpleStretch from './pages/healing/meditation/SimpleStretch'
 import DrawingMain from './pages/healing/creation/DrawingMain'
 import Canvas from './pages/healing/creation/Canvas'
 
+import SelfTestMain from './pages/selftest/SelfTestMain';
+import SelfTestMBTIMain from './pages/selftest/SelfTestMBTIMain';
+
+import CommunityMain from './pages/community/CommunityMain';
+import CommunityWrite from './pages/community/CommunityWrite';
+
+
+
 
 function AppContent() {
     const location = useLocation();
@@ -66,6 +74,11 @@ function AppContent() {
                     <Route path="members" element={<MembersPage />} />    {/* /admin/members */}
                     <Route path="contents" element={<ContentsPage />} />  {/* /admin/contents */}
                 </Route>
+                <Route path="/selftest" element={<SelfTestMain />} />
+                <Route path="/selftest/mbti" element={<SelfTestMBTIMain />} />
+
+                <Route path="/community" element={<CommunityMain />} />
+                <Route path="/community/write" element={<CommunityWrite />} />
             </Routes>
         </>
     );
