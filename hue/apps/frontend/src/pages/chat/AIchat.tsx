@@ -122,8 +122,11 @@
 //
 // export default AIchat;
 import { useState, useRef, useEffect } from "react";
+
 // import { aiSmoke } from "@/lib/api"; // BE1(/api/ai/smoke) 경유 호출
+
 import "../../index.css";
+import { postChatSmart } from "./api";
 
 interface Message {
   sender: "user" | "ai";
@@ -138,17 +141,24 @@ interface ChatHistory {
 const SESSION_ID = "fe-s1";
 const USER_ID = 1;
 
+
+export default function AIchat() {
+
 function getTodayDateStr(): string {
   return new Date().toISOString().split("T")[0]; // "2025-09-27" 형식
 }
 
 function AIchat() {
+
   const [messages, setMessages] = useState<Message[]>([
     { sender: "ai", text: "안녕하세요! 편하게 이야기 시작해볼까요? 😊" },
   ]);
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [target, setTarget] = useState<string>("");
+
   const [chatHistories, setChatHistories] = useState<ChatHistory[]>([
     {
       date: "2025-09-24",
@@ -175,6 +185,7 @@ function AIchat() {
   const today = getTodayDateStr();
   const [activeDate, setActiveDate] = useState<string>(today); // 기본은 오늘 날짜
 
+
   const chatMessagesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -187,10 +198,21 @@ function AIchat() {
     setLoading(true);
     setError(null);
     try {
+
+      const { res, usedBase, usedPath } = await postChatSmart({
+        session_id: SESSION_ID,
+        message: userMessage,
+        user_id: USER_ID,
+      });
+      setTarget(`${usedBase}${usedPath}`);
+      setMessages((prev) => [...prev, { sender: "ai", text: res.reply }]);
+    } catch (e) {
+
       const res = await aiSmoke(userMessage, SESSION_ID, USER_ID);
       const reply = res?.reply ?? "(응답이 비어 있어요)";
       setMessages((prev) => [...prev, { sender: "ai", text: reply }]);
     } catch (e: unknown) {
+
       const msg = e instanceof Error ? e.message : String(e);
       setError(msg);
       setMessages((prev) => [
@@ -209,6 +231,11 @@ function AIchat() {
 
     setMessages((prev) => [...prev, { sender: "user", text: trimmed }]);
     setInput("");
+
+
+    setMessages((prev) => [...prev, { sender: "user", text: trimmed }]);
+    setInput("");
+
 
     await sendToAI(trimmed);
   };
@@ -229,10 +256,31 @@ function AIchat() {
   };
 
   return (
+    <div className="main-box-col">
+      <div className="chat-container">
+        <aside className="sidebar">
+          <div className="sidebar-title">채팅</div>
+          <button>현재 대화</button>
+          {target && (
+            <div style={{ fontSize: 11, opacity: 0.7, marginTop: 8 }}>
+              target: {target}
+            </div>
+          )}
+        </aside>
+
+        <section className="chat">
+          <div className="chat-messages" ref={chatMessagesRef}>
+            {messages.map((m, idx) => (
+              <div key={idx} className={`message ${m.sender === "user" ? "right" : "left"}`}>
+                {m.text}
+              </div>
+            ))}
+
       <div className="main-box-col">
         <div className="chat-container">
           <aside className="sidebar">
             <div className="sidebar-title">채팅</div>
+
 
             <button
                 onClick={handleLoadTodayChat}
@@ -299,6 +347,10 @@ function AIchat() {
         </div>
       </div>
   );
+
+}
+
 }
 
 export default AIchat;
+
