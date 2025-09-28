@@ -19,6 +19,7 @@ export default function HealingEditor() {
     return (
         <div className="ce_wrap">
             <div className="ce_toolbar">
+                <h2 className="se_heading"></h2>
                 <input className="ce_input" placeholder="검색(제목/카테고리)" />
                 <button className="ce_btn primary">+ 새 콘텐츠</button>
             </div>

@@ -11,7 +11,7 @@ function Navbar() {
                 <Link to="/aichat">휴봇과 상담</Link>
                 <Link to="/healing">힐링 컨텐츠</Link>
                 <Link to="/">심리 분석</Link>
-                <Link to="/">커뮤니티</Link>
+                <Link to="/community">커뮤니티</Link>
                 <Link to="/selftest">자기분석 테스트</Link>
             </div>
             <div className="nav-right">

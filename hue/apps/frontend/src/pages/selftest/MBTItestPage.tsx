@@ -7,40 +7,21 @@ type Question = {
     options: string[];
 };
 
-const sampleQuestions: Question[] = [
+const sampleMBTIQuestions: Question[] = [
     {
         id: 1,
-        content: "최근 일주일 간 수면에 문제가 있었나요?",
-        options: ["전혀 아니다", "가끔 그렇다", "자주 그렇다", "항상 그렇다"]
+        content: "혼자 있는 시간이 더 편하다고 느낀다.",
+        options: ["매우 그렇다", "어느 정도 그렇다", "별로 그렇지 않다", "전혀 아니다"]
     },
     {
         id: 2,
-        content: "최근 감정기복이 심했다고 느끼나요?",
-        options: ["전혀 아니다", "약간 그렇다", "많이 그렇다", "매우 그렇다"]
+        content: "계획 세우는 것보다 즉흥적인 걸 더 좋아한다.",
+        options: ["매우 그렇다", "어느 정도 그렇다", "별로 그렇지 않다", "전혀 아니다"]
     },
-    {
-        id: 3,
-        content: "최근 일주일 간 수면에 문제가 있었나요?",
-        options: ["전혀 아니다", "가끔 그렇다", "자주 그렇다", "항상 그렇다"]
-    },
-    {
-        id: 4,
-        content: "최근 감정기복이 심했다고 느끼나요?",
-        options: ["전혀 아니다", "약간 그렇다", "많이 그렇다", "매우 그렇다"]
-    },
-    {
-        id: 5,
-        content: "최근 일주일 간 수면에 문제가 있었나요?",
-        options: ["전혀 아니다", "가끔 그렇다", "자주 그렇다", "항상 그렇다"]
-    },
-    {
-        id: 6,
-        content: "최근 감정기복이 심했다고 느끼나요?",
-        options: ["전혀 아니다", "약간 그렇다", "많이 그렇다", "매우 그렇다"]
-    },
+    // ➕ 이후 백엔드 연동 시 API에서 받아오도록
 ];
 
-export default function BasictestPage() {
+export default function MBTITestPage() {
     const [answers, setAnswers] = useState<{ [key: number]: string }>({});
 
     const handleOptionChange = (questionId: number, selected: string) => {
@@ -51,19 +32,19 @@ export default function BasictestPage() {
     };
 
     const handleSubmit = () => {
-        console.log("제출한 답변: ", answers);
+        console.log("MBTI 제출한 답변: ", answers);
 
-        // API 연동 예시 위치
-        // axios.post('/api/selftest/basic', answers).then(...)
+        // 🔄 MBTI 결과 API 연동 위치
+        // axios.post('/api/selftest/mbti', answers).then(...)
 
-        alert("자가진단 제출 완료!");
+        alert("MBTI 검사 제출 완료!");
     };
 
     return (
         <div className="test-selftest-container">
-            <h2 className="test-title">자가진단 테스트</h2>
+            <h2 className="test-title">MBTI 심리 검사</h2>
 
-            {sampleQuestions.map((q) => (
+            {sampleMBTIQuestions.map((q) => (
                 <div key={q.id} className="test-question-block">
                     <p className="test-question-content">{q.content}</p>
                     <div className="test-options">
@@ -84,7 +65,7 @@ export default function BasictestPage() {
             ))}
 
             <button className="test-submit-button" onClick={handleSubmit}>
-                제출하기
+                결과 보기
             </button>
         </div>
     );

@@ -42,7 +42,7 @@ const SelfTestMBTIMain = () => {
                     <h3>나의 성향을 빠르게 알아보세요!!</h3>
                     <p className="test-desc">이 테스트는 성격유형을 간단히 확인하는 참고용입니다.</p>
                     <p className="test-desc">정확한 성격 분석은 전문 심리 상담을 통해 확인할 수 있습니다.</p>
-                    <button className="start-btn" onClick={() => navigate("/selftest/mbti/start")}>
+                    <button className="start-btn" onClick={() => navigate("/selftest/mbti/test")}>
                         MBTI 검사 시작
                     </button>
                 </section>

@@ -24,9 +24,16 @@ import Canvas from './pages/healing/creation/Canvas'
 
 import SelfTestMain from './pages/selftest/SelfTestMain';
 import SelfTestMBTIMain from './pages/selftest/SelfTestMBTIMain';
+import BasictestPage from "./pages/selftest/BasictestPage";
+import ResultPage from "./pages/selftest/ResultPage";
+import MBTItestPage from "./pages/selftest/MBTItestPage";
 
 import CommunityMain from './pages/community/CommunityMain';
 import CommunityWrite from './pages/community/CommunityWrite';
+import BasicBoard from "./pages/community/category/BasicBoard";
+import MBTIBoard from "./pages/community/category/MBTIBoard";
+import FreeBoard from "./pages/community/category/FreeBoard";
+// import PostDetail from "./pages/community/post/PostDetail";
 
 
 
@@ -76,9 +83,16 @@ function AppContent() {
                 </Route>
                 <Route path="/selftest" element={<SelfTestMain />} />
                 <Route path="/selftest/mbti" element={<SelfTestMBTIMain />} />
+                <Route path="/selftest/basic" element={<BasictestPage />} />
+                <Route path="/selftest/mbti/test" element={<MBTItestPage />} />
+                <Route path="/selftest/result" element={<ResultPage />} />
 
                 <Route path="/community" element={<CommunityMain />} />
                 <Route path="/community/write" element={<CommunityWrite />} />
+                <Route path="/community/basic" element={<BasicBoard />} />
+                <Route path="/community/mbti" element={<MBTIBoard />} />
+                <Route path="/community/free" element={<FreeBoard />} />
+                {/*<Route path="/community/post/:postId" element={<PostDetail />} />*/}
             </Routes>
         </>
     );

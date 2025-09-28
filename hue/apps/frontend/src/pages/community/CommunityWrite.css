@@ -1,0 +1,85 @@
+.write-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    font-family: "Pretendard", sans-serif;
+}
+
+.write-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.write-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.write-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.write-select,
+.write-input,
+.write-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.write-select:focus,
+.write-input:focus,
+.write-textarea:focus {
+    border-color: #6666ff;
+    outline: none;
+}
+
+.write-textarea {
+    resize: vertical;
+    min-height: 160px;
+}
+
+.write-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.write-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.write-button.submit {
+    background-color: #6666ff;
+    color: white;
+}
+
+.write-button.submit:hover {
+    background-color: #4a4acc;
+}
+
+.write-button.cancel {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.write-button.cancel:hover {
+    background-color: #cacaca;
+}
