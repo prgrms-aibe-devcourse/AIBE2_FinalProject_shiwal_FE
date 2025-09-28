@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { aiSmoke } from "@/lib/api"; // ← BE1(/api/ai/smoke) 경유 호출
 import "../../index.css";
+import { postChatSmart } from "./api";
 
 interface Message {
   sender: "user" | "ai";
@@ -10,17 +10,17 @@ interface Message {
 const SESSION_ID = "fe-s1";
 const USER_ID = 1;
 
-function AIchat() {
+export default function AIchat() {
   const [messages, setMessages] = useState<Message[]>([
     { sender: "ai", text: "안녕하세요! 편하게 이야기 시작해볼까요? 😊" },
   ]);
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [target, setTarget] = useState<string>("");
 
   const chatMessagesRef = useRef<HTMLDivElement>(null);
 
-  // 새 메시지 생길 때 스크롤 맨 아래로
   useEffect(() => {
     if (chatMessagesRef.current) {
       chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
@@ -31,11 +31,14 @@ function AIchat() {
     setLoading(true);
     setError(null);
     try {
-      // BE1 → BE2 호출, { reply } 반환
-      const res = await aiSmoke(userMessage, SESSION_ID, USER_ID);
-      const reply = res?.reply ?? "(응답이 비어 있어요)";
-      setMessages((prev) => [...prev, { sender: "ai", text: reply }]);
-    } catch (e: unknown) {
+      const { res, usedBase, usedPath } = await postChatSmart({
+        session_id: SESSION_ID,
+        message: userMessage,
+        user_id: USER_ID,
+      });
+      setTarget(`${usedBase}${usedPath}`);
+      setMessages((prev) => [...prev, { sender: "ai", text: res.reply }]);
+    } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       setError(msg);
       setMessages((prev) => [
@@ -51,12 +54,8 @@ function AIchat() {
     e.preventDefault();
     const trimmed = input.trim();
     if (!trimmed || loading) return;
-
-    // 내 메시지 먼저 렌더
     setMessages((prev) => [...prev, { sender: "user", text: trimmed }]);
     setInput("");
-
-    // AI 호출
     await sendToAI(trimmed);
   };
 
@@ -66,18 +65,17 @@ function AIchat() {
         <aside className="sidebar">
           <div className="sidebar-title">채팅</div>
           <button>현재 대화</button>
-          <button>이전 대화 주제 1</button>
-          <button>이전 대화 주제 2</button>
-          <button>이전 대화 주제 3</button>
+          {target && (
+            <div style={{ fontSize: 11, opacity: 0.7, marginTop: 8 }}>
+              target: {target}
+            </div>
+          )}
         </aside>
 
         <section className="chat">
           <div className="chat-messages" ref={chatMessagesRef}>
             {messages.map((m, idx) => (
-              <div
-                key={idx}
-                className={`message ${m.sender === "user" ? "right" : "left"}`}
-              >
+              <div key={idx} className={`message ${m.sender === "user" ? "right" : "left"}`}>
                 {m.text}
               </div>
             ))}
@@ -119,5 +117,3 @@ function AIchat() {
     </div>
   );
 }
-
-export default AIchat;
