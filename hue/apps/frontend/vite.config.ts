@@ -10,8 +10,16 @@ export default defineConfig({
     strictPort: true,
     open: true,
     proxy: {
-      '/api':   { target: 'http://localhost:8080', changeOrigin: true },
-      '/admin': { target: 'http://localhost:8080', changeOrigin: true },
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/admin': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/admin/, ''),
+      },
     },
   },
   resolve: { alias: { '@': '/src' } },
